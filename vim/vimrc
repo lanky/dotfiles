@@ -1,0 +1,146 @@
+" BEGIN VUNDLE CONFIGURATION
+" -----------------------
+set nocompatible
+filetype off
+
+" setup RTP and initialise
+set rtp +=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" vundle plugin management
+Plugin 'VundleVim/Vundle.vim'
+
+" git support
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" handy shortcuts
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
+
+" Syntastic syntax checking
+Plugin 'scrooloose/syntastic'
+" jedi completion
+Plugin 'davidhalter/vim-jedi'
+
+
+" Tab completion
+" requires a whole stack of updated deps!
+" Plugin 'Valloric/YouCompleteMe'
+
+
+" snippet support
+Plugin 'sirver/ultisnips'
+let g:UltiSnipsExpandTriggers = "<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit = "vertical"
+
+" and standard snippet sets
+Plugin 'honza/vim-snippets'
+
+" puppet support and dependencies
+Plugin 'godlygeek/tabular'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'rodjek/vim-puppet'
+
+" ansible YAML support
+Plugin 'chase/vim-ansible-yaml'
+
+" kickstart highlighting
+Plugin 'tangledhelix/vim-kickstart'
+
+" jinja2 highlighting
+Plugin 'Glench/Vim-Jinja2-Syntax'
+
+" JSON
+Plugin 'elzr/vim-json'
+
+" powershell
+Plugin 'PProvost/vim-ps1'
+
+" markdown
+Plugin 'tpope/vim-markdown'
+
+" loadsa colours
+Plugin 'flazz/vim-colorschemes'
+
+" fancy statusline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+
+Plugin 'Valloric/YouCompleteMe'
+
+" finish vundle setup
+call vundle#end()
+filetype plugin indent on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" END VUNDLE CONFIGURATION
+" ------------------------
+"
+function! StripTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
+    %s,\s\+$,,e
+    call cursor(l, c)
+endfun
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+"
+"
+set nohls
+set incsearch
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set background=dark
+if &diff
+    colorscheme jellybeans
+else
+    colorscheme elflord
+endif
+set pastetoggle=<F8>
+set modeline
+set autochdir
+
+" do not hide symbols in JSON files etc
+set conceallevel=0
+
+" statusline
+"set statusline=%t       "tail of the filename
+"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"set statusline+=%{&ff}] "file format
+"set statusline+=%h      "help file flag
+"set statusline+=%m      "modified flag
+"set statusline+=%r      "read only flag
+"set statusline+=%y      "filetype
+"set statusline+=%=      "left/right separator
+"set statusline+=%c,     "cursor column
+"set statusline+=%l/%L   "cursor line/total lines
+"set statusline+=\ %P    "percent through file
+"
+" always show status line
+set laststatus=2
+
+au BufWritePre * :call StripTrailingWhitespace()
+
+au FileType python set cindent ts=4 sts=4 et sw=4 tw=0 nu
+
+au FileType puppet set cindent ts=2 sts=2 sw=2 nu
+
