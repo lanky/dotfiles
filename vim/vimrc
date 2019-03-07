@@ -101,7 +101,12 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
           \ | wincmd p | diffthis
 endif
-"
+" airline and syntastic config
+let g:airline#extensions#tabline#enabled = 1
+
+" syntastic ruby, for chef and other ruby things
+let g:syntastic_ruby_checkers = [ 'rubocop' ]
+
 "
 set nohls
 set incsearch
@@ -113,11 +118,17 @@ set background=dark
 if &diff
     colorscheme jellybeans
 else
-    colorscheme elflord
+    colorscheme myelflord
 endif
 set pastetoggle=<F8>
 set modeline
 set autochdir
+set splitbelow
+set splitright
+
+set ruler
+set showtabline=2
+
 
 " do not hide symbols in JSON files etc
 set conceallevel=0
@@ -138,9 +149,21 @@ set conceallevel=0
 " always show status line
 set laststatus=2
 
+" Custom keymaps
+map Y y$
+set pastetoggle=<F8>
+map <F3> :set list! list? <CR>
+" map CTRL-DIRECTION to move between split windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+" filetypes etc
 au BufWritePre * :call StripTrailingWhitespace()
 
 au FileType python set cindent ts=4 sts=4 et sw=4 tw=0 nu
-
 au FileType puppet set cindent ts=2 sts=2 sw=2 nu
-
+au FileType ruby set ts=2 sts=2 sw=2 et ci nu
+au FileType json set ts=2 sts=2 sw=2 et ci nu
