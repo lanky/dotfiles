@@ -9,6 +9,15 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+
+function __get_venv() {
+    if [ -n "${VIRTUAL_ENV}" ]; then
+        echo -n "(${VIRTUAL_ENV##*/})${*}"
+    else
+        echo -n "${*}"
+    fi
+}
+
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
     export GIT_PROMPT_ONLY_IN_REPO=1
@@ -19,5 +28,8 @@ if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     export GIT_PS1_SHOWSTASHSTATE=1
     export MYPS1="\e[1;34m\u\e[0m@\e[33m\h\e[0m:\e[31m\W\e[0m"
     # export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\n\\\$ "'
-    export PROMPT_COMMAND='__git_ps1 "${MYPS1}" "\n\\\$ "'
+    if [ -n "${VIRTUAL_ENV}" ]; then
+        export PP="(${VIRTUAL_ENV##*/})"
+    fi
+    export PROMPT_COMMAND='__git_ps1 "${MY_PS1}" "\n$(__get_venv)\\\$ "'
 fi
