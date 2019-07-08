@@ -26,7 +26,7 @@ if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     export GIT_PS1_SHOWCOLORHINTS=1
     export GIT_PS1_SHOWUPSTREAM=git
     export GIT_PS1_SHOWSTASHSTATE=1
-    export MYPS1="\e[1;34m\u\e[0m@\e[33m\h\e[0m:\e[31m\W\e[0m"
+    export MY_PS1="\e[1;34m\u\e[0m@\e[33m\h\e[0m:\e[31m\W\e[0m"
     # export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\n\\\$ "'
     if [ -n "${VIRTUAL_ENV}" ]; then
         export PP="(${VIRTUAL_ENV##*/})"
