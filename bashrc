@@ -18,6 +18,19 @@ function __get_venv() {
     fi
 }
 
+function pathmunge() {
+    case ":${PATH}:" in
+        *:"${1}":*)
+            ;;
+        *)
+            if [ "$2" = "after" ] ; then
+                PATH=$PATH:$1
+            else
+                PATH=$1:$PATH
+            fi
+    esac
+}
+
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
     export GIT_PROMPT_ONLY_IN_REPO=1
@@ -33,3 +46,8 @@ if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     fi
     export PROMPT_COMMAND='__git_ps1 "${MY_PS1}" "\n$(__get_venv)\\\$ "'
 fi
+
+pathmunge ${HOME}/bin after
+
+
+export PATH
