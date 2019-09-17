@@ -1,0 +1,9 @@
+output /home/lanky/Videos/TV
+metadata generic
+subdir 1
+whitespace 1
+subdirformat <nameshort>/Season <seriesnum>/
+fileprefix <nameshort> <seriesnum>x<episodenum> - <episodeshort>
+listformat <index>: <name>: <episodenum> - <episode>, <channel>, <pid>
+nopurge 1
+
