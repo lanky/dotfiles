@@ -9,7 +9,7 @@
   if exists("syntax_on")
     syntax reset
   endif
-~ let g:colors_name = "myelflord"
+~ let g:colors_name="myelflord"
   hi Normal       guifg=cyan          guibg=black
   hi Comment  term=bold       ctermfg=DarkCyan        guifg=#80a0ff
   hi Constant term=underline  ctermfg=Magenta     guifg=Magenta
