@@ -20,7 +20,7 @@ Plugin 'tpope/vim-surround'
 " Syntastic syntax checking
 Plugin 'scrooloose/syntastic'
 " jedi completion
-Plugin 'davidhalter/vim-jedi'
+Plugin 'davidhalter/jedi-vim'
 
 
 " Tab completion
@@ -69,7 +69,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " finish vundle setup
 call vundle#end()
@@ -118,7 +118,7 @@ set background=dark
 if &diff
     colorscheme jellybeans
 else
-    colorscheme myelflord
+    colorscheme elflord
 endif
 set pastetoggle=<F8>
 set modeline
@@ -158,6 +158,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+set guifont=DejaVu\ Sans\ Mono\ 14
 
 
 " filetypes etc
