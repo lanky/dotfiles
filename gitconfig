@@ -1,24 +1,26 @@
 [user]
-      name = Stuart Sears
-      email = stuart@sjsears.com
+	name = Stuart Sears
+	email = stuart@sjsears.com
   [push]
       default = simple
   [alias]
-      st = status
-      ci = commit -v
-      cp = cherry-pick
-      unstage = reset HEAD
-      dt = difftool
+      bl = log --color --abbrev-commit --pretty=format:'%Cred%h%Creset %Cgreen[%cd]%Creset %s - %Cblue%an%Creset %C(yellow)%d%Creset' --date=relative -10
       br = branch -v
+      ci = commit -v
       co = checkout
-      pl = log --graph --color --pretty=format:'%Cred%h%Creset - %Cgreen[%ci] %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+      cp = cherry-pick
+      dt = difftool
+      fp = format-patch
       ls = ls-files
-	lst = status .
+      lst = status .
+      pl = log --graph --color --pretty=format:'%Cred%h%Creset - %Cgreen[%ci] %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+      st = status
+      unstage = reset HEAD
   [diff]
       tool = vimdiff
   [core]
       editor = vim
-	autocrlf = input
+    autocrlf = input
   [color]
     ui = auto
   [color "branch"]
@@ -37,3 +39,8 @@
   [difftool]
       prompt = off
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
