@@ -70,6 +70,9 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 " Plugin 'Valloric/YouCompleteMe'
+"
+" terraform syntax etc
+Plugin 'hashivim/vim-terraform'
 
 " finish vundle setup
 call vundle#end()
