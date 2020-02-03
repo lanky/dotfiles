@@ -74,6 +74,10 @@ let g:airline#extensions#tabline#enabled = 1
 " terraform syntax etc
 Plugin 'hashivim/vim-terraform'
 
+" docstring generator
+Plugin 'kkoomen/vim-doge'
+
+
 " finish vundle setup
 call vundle#end()
 filetype plugin indent on
@@ -109,6 +113,11 @@ let g:airline#extensions#tabline#enabled = 1
 
 " syntastic ruby, for chef and other ruby things
 let g:syntastic_ruby_checkers = [ 'rubocop' ]
+
+" mapleader
+let g:mapleader=","
+let g:doge_doc_standard_python="google"
+let g:doge_mapping="<Leader>q"
 
 "
 set nohls
