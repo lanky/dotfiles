@@ -14,12 +14,13 @@
       ls = ls-files
       lst = status .
       pl = log --graph --color --pretty=format:'%Cred%h%Creset - %Cgreen[%ci] %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+      ncl = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
       st = status
       unstage = reset HEAD
   [diff]
-      tool = vimdiff
+      tool = nvim -d
   [core]
-      editor = vim
+      editor = nvim
     autocrlf = input
   [color]
     ui = auto
@@ -46,3 +47,5 @@
 	required = true
 [pull]
 	rebase = true
+[init]
+	defaultBranch = master
