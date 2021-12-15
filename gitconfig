@@ -25,9 +25,9 @@
   ncl = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
   st = status
   unstage = reset HEAD
-	cpa = cherry-pick --abort
-	cps = cherry-pick --skip
-	cpc = cherry-pick --continue
+  cpa = cherry-pick --abort
+  cps = cherry-pick --skip
+  cpc = cherry-pick --continue
 [diff]
   tool = nvim -d
 [core]
@@ -66,6 +66,6 @@
 [init]
   defaultBranch = master
 [commit]
-	verbose = true
+  verbose = true
 [url "ssh://git@github.com"]
     pushinsteadOf = "https://github.com"
