@@ -15,7 +15,7 @@ install: install-vim
 install-vim:
 	@install -d $$HOME/.vim/plugged
 	@install -d $$HOME/.vim/autoload
-	@curl -Flo $$HOME/.vim/autoload/plug.vim $(VIMPLUG)
+	@[ -f $$HOME/.vim/autoload/plug.vim ] || curl -fLo $$HOME/.vim/autoload/plug.vim $(VIMPLUG)
 	@ln -svf $(ROOT_DIR)/vim/vimrc $${HOME}/.vim/vimrc
 	@vim +PlugInstall +qa
 
@@ -23,7 +23,7 @@ install-nvim:
 	@install -d $$HOME/.config/nvim
 	@install -d $(NVIM_AL)
 	@ln -svf $(ROOT_DIR)/nvim/init.vim $$HOME/.config/nvim/
-	@if [ ! -f $(NVIM_AL)/plug.vim ]; then curl -Flo $(NVIM_AL)/plug.vim $(VIMPLUG); fi
+	@[ -f $(NVIM_AL)/plug.vim ] || curl -fLo $(NVIM_AL)/plug.vim $(VIMPLUG)
 	@nvim +PlugInstall +qa
 
 install-tmux:
