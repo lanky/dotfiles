@@ -17,8 +17,11 @@
       ncl = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
       st = status
       unstage = reset HEAD
+	cpa = cherry-pick --abort
+	cps = cherry-pick --skip
+	cpc = cherry-pick --continue
   [diff]
-      tool = nvim -d
+      tool = nvimdiff
   [core]
       editor = nvim
     autocrlf = input
@@ -38,8 +41,9 @@
     changed = green
     untracked = cyan
   [difftool]
-      prompt = off
-
+    prompt = off
+  [difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -49,3 +53,11 @@
 	rebase = true
 [init]
 	defaultBranch = master
+[rebase]
+	autostash = true
+	autosquash = true
+[commit]
+	verbose = true
+
+[url "ssh://git@github.com"]
+    pushinsteadOf = "https://github.com"
