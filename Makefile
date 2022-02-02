@@ -1,7 +1,10 @@
 # vim: set noet :
 #
 #
-ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+NVIM_AL := "$$HOME/.local/share/nvim/site/autoload/"
+# source for vim plug
+VIMPLUG := "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 default:
 	@echo "mkfile_path $(mkfile_path)"
@@ -10,10 +13,18 @@ default:
 
 install: install-vim
 install-vim:
-	@install -d $$HOME/.vim/bundle
+	@install -d $$HOME/.vim/plugged
+	@install -d $$HOME/.vim/autoload
+	@curl -Flo $$HOME/.vim/autoload/plug.vim $(VIMPLUG)
 	@ln -svf $(ROOT_DIR)/vim/vimrc $${HOME}/.vim/vimrc
-	@if [ ! -d $${HOME}/.vim/bundle/Vundle.vim ]; then git clone git@github.com:VundleVim/Vundle.vim.git $${HOME}/.vim/bundle/Vundle.vim; fi
-	@vim +PluginInstall +qa
+	@vim +PlugInstall +qa
+
+install-nvim:
+	@install -d $$HOME/.config/nvim
+	@install -d $(NVIM_AL)
+	@ln -svf $(ROOT_DIR)/nvim/init.vim $$HOME/.config/nvim/
+	@if [ ! -f $(NVIM_AL)/plug.vim ]; then curl -Flo $(NVIM_AL)/plug.vim $(VIMPLUG); fi
+	@nvim +PlugInstall +qa
 
 install-tmux:
 	@ln -svf $(ROOT_DIR)/tmux.conf $${HOME}/.tmux.conf

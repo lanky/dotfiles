@@ -1,0 +1,21 @@
+{
+  "python.venvPath": "${env:HOME}/.virtualenvs",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.virtualenvs/nvim/bin/black",
+  "pyright.organizeimports.provider": "isort",
+  "python.sortImports.path": "~/.virtualenvs/nvim/bin/isort",
+  "python.sortImports.args": ["--profile=black"],
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnTypeFiletypes": ["python"],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  }
+}

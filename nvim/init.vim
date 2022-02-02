@@ -6,7 +6,23 @@ call plug#begin()
 " vundle plugin management
 Plug 'VundleVim/Vundle.vim'
 
+" requires node.js > 12*
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" auto-install coc extensions
+let g:coc_global_extensions = [
+\    'coc-css', 
+\    'coc-jedi', 
+\    'coc-json', 
+\    'coc-markdownlint', 
+\    'coc-prettier', 
+\    'coc-pyright', 
+\    'coc-sh', 
+\    'coc-snippets', 
+\    'coc-solargraph',
+\    'coc-yaml', 
+\    ]
+" gem install solargraph for ruby completion
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
