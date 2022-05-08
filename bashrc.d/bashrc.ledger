@@ -1,0 +1,19 @@
+# hledger configuration
+export LEDGER_SRC=~/Documents/dev/ledger-tools
+export LEDGER_FILE=${LEDGER_SRC}/new.journal
+alias cred='hledger --rules-file ${LEDGER_SRC}/import-rules/creditcard.rules'
+alias curr='hledger --rules-file ${LEDGER_SRC}/import-rules/current.rules'
+
+function hlast() {
+	for acc in isa \
+               savings \
+               transfers \
+               paypal \
+               unknown \
+               mastercard_61 \
+               mastercard_63 \
+               current; do
+		hledger reg ${acc}| tail -n1
+	done
+}
+
