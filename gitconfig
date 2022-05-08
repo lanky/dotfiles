@@ -62,7 +62,7 @@
   rebase = true
 [rebase]
   autostash = true
-  autoSquash = true
+  autosquash = true
 [init]
   defaultBranch = master
 [commit]
