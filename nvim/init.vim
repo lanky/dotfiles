@@ -75,6 +75,9 @@ Plug 'kkoomen/vim-doge'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'fisadev/vim-isort'
 
+" ukedown support
+Plug 'lanky/vim-ukedown'
+
 " finish vundle setup
 call plug#end()
 endif
