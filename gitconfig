@@ -5,11 +5,7 @@
 [push]
   default = simple
 [alias]
-  bl = log  --color \
-       --abbrev-commit \
-       --pretty=format:'%Cred%h%Creset %Cgreen[%cd]%Creset %s - %Cblue%an%Creset %C(yellow)%d%Creset' \
-       --date=relative \
-       -10
+  bl = log --abbrev-commit --date=relative --decorate=full -10
   br = branch -v
   ci = commit -v
   co = checkout
@@ -18,18 +14,19 @@
   fp = format-patch
   ls = ls-files
   lst = status .
-  pl = log --graph \
-       --color \
-       --pretty=format:'%Cred%h%Creset - %Cgreen[%ci] %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-       --abbrev-commit
+  tl = tag -l -n1
+  pl = log --graph --color --abbrev-commit
   ncl = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
   st = status
   unstage = reset HEAD
   cpa = cherry-pick --abort
   cps = cherry-pick --skip
   cpc = cherry-pick --continue
+  pb = "!git push -u origin \"$(git symbolic-ref --short HEAD)\""
+[format]
+  pretty = format:%C(red)%h%Creset %C(green)[%cd]%Creset %C(blue)%an%Creset %s %C(yellow)%w(72,1,2)%d%Creset
 [diff]
-  tool = nvim -d
+  tool = nvimdiff
 [core]
   editor = nvim
   autocrlf = input
