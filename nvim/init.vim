@@ -301,7 +301,7 @@ augroup ColourGutter
     autocmd ColorScheme * call ColourGutter()
 augroup END
 
-au FileType python set cindent ts=4 sts=4 et sw=4 tw=88 nu fdm=indent nofen cc=88
-au FileType puppet set cindent ts=2 sts=2 sw=2 nu
+au FileType python set ci ts=4 sts=4 et sw=4 tw=0 nu fdm=indent nofen cc=88
+au FileType puppet set ci ts=2 sts=2 sw=2 nu
 au FileType ruby set ts=2 sts=2 sw=2 et ci nu
-au FileType json set ts=2 sts=2 sw=2 et ci nu
+au FileType json set ts=2 sts=2 sw=2 et ci nu conceallevel=0
