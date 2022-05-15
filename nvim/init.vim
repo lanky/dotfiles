@@ -80,6 +80,8 @@ Plug 'lanky/vim-ukedown'
 
 " snippety goodness
 Plug 'honza/vim-snippets'
+" ukedown support
+Plug 'lanky/vim-ukedown'
 
 " finish vundle setup
 call plug#end()
