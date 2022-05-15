@@ -34,6 +34,6 @@ install-git:
 
 install-bash:
 	@[ -d $${HOME}/.bashrc.d ] || mkdir -p $${HOME}/.bashrc.d
-	@for F in bashrc.d/*; do [ -e ~/.$${F} ] || ln -svf $${F} $${HOME}/.bashrc.d/; done
-	@[[ `grep -q 'bashrc\.d' $${HOME}/.bashrc` ]] || cat bashrc_d_stanza >> ~/.bashrc
-	@if `grep -vq 'bashrc.local' ~/.bashrc`; then echo '[ -f ~/.bashrc.local ] && source ~/.bashrc.local' >> ~/.bashrc; fi
+	@for F in bashrc.d/*; do [ -e ~/.$${F} ] || ln -svf $(ROOT_DIR)/$${F} $${HOME}/.bashrc.d/; done
+	@grep -q 'bashrc\.d' ~/.bashrc || cat bashrc_d_stanza
+	@grep -q 'bashrc.local' ~/.bashrc || echo '[ -f ~/.bashrc.local ] && source ~/.bashrc.local' >> ~/.bashrc
