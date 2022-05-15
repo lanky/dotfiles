@@ -78,6 +78,9 @@ Plug 'fisadev/vim-isort'
 " ukedown support
 Plug 'lanky/vim-ukedown'
 
+" snippety goodness
+Plug 'honza/vim-snippets'
+
 " finish vundle setup
 call plug#end()
 endif
@@ -93,6 +96,26 @@ let g:python_host_prog = expand('~/.virtualenvs/nvim_py2/bin/python')
 let g:doge_mapping = '<Leader>d'
 let g:doge_enable_mappings = 1
 let g:doge_doc_standard_python = 'google'
+
+" snippets, use TAB for completion and jumping etc
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+imap <C-e> <Plug>(coc-snippets-expand)
+
+let g:coc_snippet_next = '<tab>'
+
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " core settings
 set tabstop=4
