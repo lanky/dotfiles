@@ -91,6 +91,8 @@ filetype plugin indent on
 let mapleader=","
 let g:python3_host_prog = expand('~/.virtualenvs/nvim/bin/python')
 let g:python_host_prog = expand('~/.virtualenvs/nvim_py2/bin/python')
+" gem install solargraph/neovim for this to work properly
+" let g:ruby_host_prog = expand('~/.chefdk/gem/ruby/2.7.0/bin/neovim-ruby-host')
 
 " DoGe
 let g:doge_mapping = '<Leader>d'
