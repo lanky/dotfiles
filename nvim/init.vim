@@ -3,9 +3,6 @@ if !exists('g:vscode')
 " BEGIN VIMPLUG CONFIG
 " -----------------------
 call plug#begin()
-" vundle plugin management
-Plug 'VundleVim/Vundle.vim'
-
 " requires node.js > 12*
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
