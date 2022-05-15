@@ -133,8 +133,6 @@ set shortmess+=c
 set nohls
 set scrolloff=0
 
-color delek
-
 " NERDTree settings
 " nmap <C-N> :NERDTreeToggle<CR>
 
@@ -299,6 +297,9 @@ augroup ColourGutter
     autocmd!
     autocmd ColorScheme * call ColourGutter()
 augroup END
+
+" change colorscheme here to endure the augroupfunction are used
+color delek
 
 au FileType python set ci ts=4 sts=4 et sw=4 tw=0 nu fdm=indent nofen cc=88
 au FileType puppet set ci ts=2 sts=2 sw=2 nu
