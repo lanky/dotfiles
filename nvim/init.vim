@@ -135,8 +135,6 @@ set nohls
 set scrolloff=0
 
 color delek
-hi! cursorline cterm=reverse
-highlight! clear signcolumn
 
 " NERDTree settings
 " nmap <C-N> :NERDTreeToggle<CR>
@@ -202,10 +200,6 @@ let g:black_virtualenv = '~/.virtualenvs/nvim'
 let g:vim_isort_config_overrides = { 'profile': ' black' }
 let g:vim_isort_python_version = 'python3'
 
-" mark end of normal line
-hi! ColorColumn ctermbg=235
-
-
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -244,21 +238,29 @@ set guifont=DejaVu\ Sans\ Code\ 14
 " where do swapfiles go?
 set directory=.,~/.local/share/nvim/swap
 
-" let's do some syntax overriding
-" DarkRed for deletion
-hi GitGutterDelete ctermfg=1 guifg=1
-" DarkGreen for added stuff
-hi GitGutterAdd ctermfg=2 guifg=2
-" DarkBlue for changed items
-hi GitGutterChange ctermfg=4 guifg=4
+function! ColourGutter() abort
+    " let's do some syntax overriding
+    " DarkRed for deletion
+    hi! GitGutterDelete ctermfg=1 guifg=1
+    " DarkGreen for added stuff
+    hi! GitGutterAdd ctermfg=2 guifg=2
+    " DarkBlue for changed items
+    hi! GitGutterChange ctermfg=4 guifg=4
+    " EOL indicator, when in use
+    hi! ColorColumn ctermbg=235
+    " COC popout window colours
+    hi! Pmenu ctermfg=black ctermbg=blue guifg=white guibg=blue
+    hi! CocFloating ctermbg=black
+    hi! CocErrorFloat ctermfg=white
+    hi! CocWarningFloat ctermfg=yellow
+    " folded text, white on darkish blue
+    hi! Folded ctermfg=white ctermbg=blue
+    " cursor
+    hi! cursorline cterm=reverse
+    " clear weird background colours for the gutter
+    hi! clear SignColumn
+endfunction
 
-highlight Pmenu ctermfg=black ctermbg=blue guifg=white guibg=blue
-hi CocFloating ctermbg=black
-hi CocErrorFloat ctermfg=white
-hi CocWarningFloat ctermfg=yellow
-
-" folded text, white on darkish blue
-hi! Folded ctermfg=white ctermbg=blue
 
 " terminal splits
 let g:term_buf = 0
@@ -294,6 +296,10 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 
 " filetypes etc
 " au BufWritePre * :call StripTrailingWhitespace()
+augroup ColourGutter
+    autocmd!
+    autocmd ColorScheme * call ColourGutter()
+augroup END
 
 au FileType python set cindent ts=4 sts=4 et sw=4 tw=88 nu fdm=indent nofen cc=88
 au FileType puppet set cindent ts=2 sts=2 sw=2 nu
